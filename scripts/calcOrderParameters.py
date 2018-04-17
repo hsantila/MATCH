@@ -16,12 +16,12 @@
         gro/tpr [topology_file], and xtc/trr/pbb file [trajectory_file] (or equivalents)
  output: order parameters [output_file] (2 textfiles)
  usage : python calcOrderParameters.py -i [order_parameter_file] -t [topology_file] -x [trajectory_file] -o [output_file] 
---------------------------------------------------------
+------------------------------------------------------------
  [order_parameter_file] should contain the definitions of order parameters in format:
  
  OP_name1 Residue Carbon_name Hydrogen_name
  OP_name2 Residue Carbon_name Hydrogen_name
- .....
+ ...
  
  Example (CHARMM36):
  
@@ -35,6 +35,9 @@
  g1_1 POPC C3 HX
  g1_2 POPC C3 HY
  
+-----------------------------------------------------------
+
+NOTE: Molecules should be made whole by preprocessing the trajectory file eg. with Gromacs trjconv and flag -pbc whole. Otherwise bonds spanning over periodic boundaries will cause an error in line 119.
 
 """
 
