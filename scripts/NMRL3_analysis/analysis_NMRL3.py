@@ -147,12 +147,12 @@ def read_sn2(datafile):
 #usage: python analysis_NMRL3.py
 #requires: the files listed below 
 Fsimufile='Form_Factor_From_Simulation.dat'
-Fexpfile='Form_Factor_From_Experiments.dat'
+Fexpfile='../../T300K/Form_Factor_From_Experiments.dat'
 #ops.txt contains simulated results for all the ops, named in the way defined in the "keys" section below
-OPsimufile='ops.txt'
-OPexp_h_n_g='Headgroup_Glycerol_Order_Parameters_Experiments.dat'
-OPexp_sn2='sn-2_Order_Parameters_Experiments.dat'
-OPexp_sn1='sn-1_Order_Parameters_Experiments.dat' 
+OPsimufile='OrdPars.dat'
+OPexp_h_n_g='../../T300K/Headgroup_Glycerol_Order_Parameters_Experiments.dat'
+OPexp_sn2='../../T300K/sn-2_Order_Parameters_Experiments.dat'
+OPexp_sn1='../../T300K/sn-1_Order_Parameters_Experiments.dat' 
 
 
 #For now, using the q_values of 2 first max and min, and the relation of peak heights (1 to 2 and 2 to 3) to characterise the FF
@@ -207,15 +207,15 @@ if len(sim_op)!=len(exp_op):
 #keys defined here
 keys_sn1=[]
 keys_sn2=[]
-keys_headgr=['gamma_C13a',
-'gamma_C13b',
-'gamma_C13c',
-'gamma_C14a',
-'gamma_C14b',
-'gamma_C14c',
-'gamma_C15a',
-'gamma_C15b',
-'gamma_C15c',
+keys_headgr=['gamma1_1',
+'gamma1_2',
+'gamma1_3',
+'gamma2_1',
+'gamma2_2',
+'gamma2_3',
+'gamma3_1',
+'gamma3_2',
+'gamma3_3',
 'beta1',
 'beta2',
 'alpha1',
@@ -259,7 +259,7 @@ for key in keys_all:
 	indx=opnames.index(key)
 
 	fit_s=fit_s+(exp_op[indx]-sim_op[indx])**2
-	fitnessf.write(opnames[indx]+" "+str(exp_op[indx])+" "+str(sim_op[indx])+" "+str(sim_stem[indx])+" "+str(abs(sim_op[indx]-exp_op[indx]))+"\n")
+	fitnessf.write(opnames[indx]+" "+str(exp_op[indx])+" "+str(sim_op[indx])+" "+str(sim_stem[indx])+" "+str(exp_op[indx]-sim_op[indx])+"\n")
 fit_s=math.sqrt(fit_s/len(exp_op))
 
 fit_sn1=0
